@@ -165,7 +165,8 @@ app.post("/create-payment", async (req, res) => {
 app.post("/webhook", async (req, res) => {
   try {
     // ID do pagamento enviado pelo MP
-    const paymentId = req.body?.data?.id;
+    const paymentId =
+  req.body?.data?.id || req.body?.id;
 
     // Se não houver ID, ignoramos
     if (!paymentId) return res.sendStatus(200);
